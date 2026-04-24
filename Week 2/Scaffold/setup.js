@@ -18,7 +18,18 @@ export function setScene() {
     document.querySelector(".render-view").appendChild(renderer.domElement);
 }
 
-export function setSceneElements() {
+export function setSceneElements()
+{
+    const floorGeometry = new THREE.BoxGeometry(16, 0.1, 16, 32, 1, 32);
+    //const floor = new THREE.Mesh(); //mesh needs geometry and material
+    const floorMaterial = new MeshBasicMaterial ({
+        color: (0,1,0),
+        wireframe: true,
+    })
+    const floor = new THREE.Mesh(floorGeometry, floor);
+    floor.position.y = -1;
+    scene.add(floor);
+
 
     const cubeGeometry = new THREE.BoxGeometry(2,2,2);
     const cubeMaterial = new THREE.MeshBasicMaterial({
